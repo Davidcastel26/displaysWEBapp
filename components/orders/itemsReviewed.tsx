@@ -12,9 +12,9 @@ export const ItemsReviewed = () => {
         },
         {
             id: nanoid(),
-            productTitleOrdered :"Papaya",
-            img: 'https://latorremx.vtexassets.com/arquivos/ids/165752-1600-auto?v=637685360512630000&width=1600&height=auto&aspect=true',
-            amount: 3,
+            productTitleOrdered :"Red de limon",
+            img: 'https://latorremx.vtexassets.com/arquivos/ids/164917-1200-auto?v=637685243611170000&width=1200&height=auto&aspect=true',
+            amount: 5,
         },
     ]
 
