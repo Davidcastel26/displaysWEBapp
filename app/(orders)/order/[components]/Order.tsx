@@ -1,4 +1,4 @@
-import { ItemOrder } from "@/components/orders"
+import { ItemOrder, ReviewOrder } from "@/components/orders"
 import { CardTitle } from "@/components/system"
 
 export const OrdersDisplay = () => {
@@ -9,6 +9,7 @@ export const OrdersDisplay = () => {
     <div>
         <CardTitle title={title} parraf={prf} />
         <ItemOrder />
+        <ReviewOrder />
     </div>
   )
 }
