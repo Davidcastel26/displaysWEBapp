@@ -24,8 +24,13 @@ export const MenuNav = () => {
             <SheetTitle>😎</SheetTitle>
             <SheetDescription className="text-2xl font-bold text-left">
                 
+                <Link href="/" >
+                    Crear Pedido
+                </Link>
+            </SheetDescription>
+            <SheetDescription className="text-2xl font-bold text-left" >
                 <Link href="/stores" >
-                    Mi Ruta
+                  Mi Ruta
                 </Link>
             </SheetDescription>
             <SheetDescription className="text-2xl font-bold text-left" >
