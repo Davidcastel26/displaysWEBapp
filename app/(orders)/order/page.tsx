@@ -1,5 +1,6 @@
 
 import { HeadTitle,
+         OrdersDisplay,
          Location } from "./[components]"
 
 const Order = () => {
@@ -7,6 +8,7 @@ const Order = () => {
     <div className="container mx-auto">
       <HeadTitle/>
       <Location />
+      <OrdersDisplay /> 
     </div>
   )
 }
