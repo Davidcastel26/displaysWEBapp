@@ -1,27 +1,44 @@
 import { Button } from "../ui"
+import { nanoid } from 'nanoid'
 
 export const ItemsReviewed = () => {
 
-    const amount = 1
+    const itemsPlaced = [
+        {
+            id: nanoid(),
+            productTitleOrdered :"Papaya",
+            img: 'https://latorremx.vtexassets.com/arquivos/ids/165752-1600-auto?v=637685360512630000&width=1600&height=auto&aspect=true',
+            amount: 3,
+        },
+    ]
 
   return (
     <div className="pb-[2rem] mt-[1rem] pt-[1rem] divide-y divide-y-reverse flex flex-col">
-        <img src={'https://latorremx.vtexassets.com/arquivos/ids/165752-1600-auto?v=637685360512630000&width=1600&height=auto&aspect=true'} alt="product" />
-        <div className="flex justify-between ">
-            <div className="flex flex-row">
-            <h5 className="font-semibold">
-                Cantidad:
-            </h5>
-            <p className="ml-3">
-                { amount.toString() }
-            </p>
-            </div>
-            <div className="">
-            <Button variant="link" >
-                Borrar
-            </Button>
-            </div>
-        </div>
+        {
+            itemsPlaced.map((e) => (
+               <div key={ e.id }>
+                <img src={e.img} alt="product" />
+                <div>
+                    <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                        { e.productTitleOrdered }
+                    </h3>
+                    <div className="flex justify-between">
+                    <div className="flex">
+                        <h5 className="font-semibold">
+                            Cantidad:
+                        </h5>
+                        <p className="ml-3">
+                            { e.amount.toString() }
+                        </p>
+                    </div>
+                        <Button variant="link" >
+                            Borrar
+                        </Button>
+                    </div>
+                </div>
+               </div> 
+            ))
+        }
     </div>
   )
 }
