@@ -1,4 +1,5 @@
 import { CardTitle } from "../system"
+import { ItemsReviewed } from "./itemsReviewed"
 
 export const ReviewOrder = () => {
 
@@ -8,8 +9,11 @@ export const ReviewOrder = () => {
 
   return (
     <div className="mt-[1rem]">
-        <CardTitle title={title} parraf={prf} />
+        <div className="divide-y divide-y-reverse">
 
+        <CardTitle title={title} parraf={prf} />
+        </div>
+        <ItemsReviewed />
     </div>
   )
 }
