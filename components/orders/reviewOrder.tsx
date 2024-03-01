@@ -8,11 +8,11 @@ export const ReviewOrder = () => {
 
 
   return (
-    <div className="mt-[1rem]">
-        <div className="divide-y divide-y-reverse">
+    <div className="mt-[1rem] divide-y">
+        {/* <div className="divide-y"> */}
 
         <CardTitle title={title} parraf={prf} />
-        </div>
+        {/* </div> */}
         <ItemsReviewed />
     </div>
   )
