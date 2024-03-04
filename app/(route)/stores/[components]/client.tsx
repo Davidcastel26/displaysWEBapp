@@ -10,7 +10,7 @@ export const ClientStore = () => {
 
   return (
     <>
-        <div className="p-[2rem]">
+        <div className="py-[2rem]">
          <CardTitle title={TITLE} parraf={PARRAF}/>
         </div>
     </>
