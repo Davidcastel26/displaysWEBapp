@@ -1,6 +1,4 @@
 'use client'
-import React from 'react'
-import { useRouter } from 'next/navigation'
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import ClassNames from 'embla-carousel-class-names'
@@ -9,21 +7,17 @@ import {
   PrevButton,
   usePrevNextButtons
 } from './CarouselArrowButton'
+import { dataCarouselProps } from '@/typescript/interface'
+import { useDataCarousel } from '@/hooks/route'
 // import { DotButton, useDotButton } from './CarouselDotButton'
 // import Image from 'next/image'
 
 
-interface dataProps {
-  id: number
-  address: string
-  address1: string
-  img: string
-}
 
 type PropType = {
   slides: number[]
   options?: EmblaOptionsType
-  data: dataProps[]
+  data: dataCarouselProps[]
 }
 
 const EmblaCarousel: React.FC<PropType> = ({ 
@@ -32,7 +26,7 @@ const EmblaCarousel: React.FC<PropType> = ({
   data 
 }) => {
 
-  const router = useRouter()
+  
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [ClassNames()])
   // const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
@@ -43,22 +37,16 @@ const EmblaCarousel: React.FC<PropType> = ({
     onNextButtonClick
   } = usePrevNextButtons(emblaApi)
 
-  const handleClickStore = () => {
-
-    console.log( 'clicking')
-    // redirect('http://localhost:3001/')
-    router.push('/')
-
-  }
+  const { handleClickStore } = useDataCarousel()
 
   return (
     <div className="embla">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="embla__container">
           {
-           data.map((place: dataProps) => (
+           data.map((place: dataCarouselProps) => (
             <div 
-              onClick={ ()=>handleClickStore() }
+              onClick={ ()=> handleClickStore(place) }
               className="embla__slide embla__class-names hover:bg-slate-100" 
               key={place?.id}
             >
@@ -85,8 +73,8 @@ const EmblaCarousel: React.FC<PropType> = ({
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
-        {/* the is the dots into the carousel  */}
-        {/* <div className="embla__dots">
+        {/* the is the dots into the carousel
+         <div className="embla__dots">
           {scrollSnaps.map((_, index) => (
             <DotButton
               key={index}
