@@ -9,10 +9,9 @@ export const ClientStore = () => {
 
 
   return (
-    <>
-        <div className="py-[2rem]">
-         <CardTitle title={TITLE} parraf={PARRAF}/>
-        </div>
-    </>
+    <div className="py-[2rem]">
+        <CardTitle title={TITLE} parraf={PARRAF}/>
+        
+    </div>
   )
 }
