@@ -10,6 +10,7 @@ import {
 } from './CarouselArrowButton'
 // import { DotButton, useDotButton } from './CarouselDotButton'
 import Image from 'next/image'
+import { redirect } from 'next/navigation'
 
 interface dataProps {
   id: number
@@ -24,10 +25,13 @@ type PropType = {
   data: dataProps[]
 }
 
-const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { slides, options, data } = props
+const EmblaCarousel: React.FC<PropType> = ({ 
+  slides, 
+  options, 
+  data 
+}) => {
+  
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [ClassNames()])
-
   // const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
   const {
@@ -37,9 +41,15 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     onNextButtonClick
   } = usePrevNextButtons(emblaApi)
 
+  const handleClickStore = () => {
+
+    redirect('/')
+
+  }
+
   return (
     <div className="embla">
-      <div className="overflow-hidden" ref={emblaRef}>
+      <div className="overflow-hidden" ref={emblaRef} onClick={ handleClickStore }>
         <div className="embla__container">
           {
            data.map((place: dataProps) => (
