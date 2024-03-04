@@ -8,9 +8,9 @@ const layout = (
     return (
     <div>
         <NavbarMain />
-        <div className="container mx-auto">
+        {/* <div className="container mx-auto"> */}
           {children}
-        </div>
+        {/* </div> */}
     </div>
   )
 }
