@@ -8,7 +8,7 @@ import {
   PrevButton,
   usePrevNextButtons
 } from './CarouselArrowButton'
-import { DotButton, useDotButton } from './CarouselDotButton'
+// import { DotButton, useDotButton } from './CarouselDotButton'
 import Image from 'next/image'
 
 interface dataProps {
@@ -28,7 +28,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   const { slides, options, data } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [ClassNames()])
 
-  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
+  // const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
   const {
     prevBtnDisabled,
@@ -70,6 +70,18 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
+        {/* the is the dots into the carousel  */}
+        {/* <div className="embla__dots">
+          {scrollSnaps.map((_, index) => (
+            <DotButton
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              className={'embla__dot'.concat(
+                index === selectedIndex ? ' embla__dot--selected' : ''
+              )}
+            />
+          ))}
+        </div> */}
       </div>
     </div>
   )
