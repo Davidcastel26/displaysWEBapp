@@ -10,9 +10,6 @@ import {
 import { dataCarouselProps } from '@/typescript/interface'
 import { useDataCarousel } from '@/hooks/route'
 // import { DotButton, useDotButton } from './CarouselDotButton'
-// import Image from 'next/image'
-
-
 
 type PropType = {
   slides: number[]
