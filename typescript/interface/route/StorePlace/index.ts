@@ -1,5 +1,8 @@
-import type{ dataCarouselProps } from './iStoreData'
+import type{ 
+    dataCarouselProps, 
+    ActionsCarousel } from './iStoreData'
 
 export {
-    dataCarouselProps
+    dataCarouselProps,
+    ActionsCarousel
 }
