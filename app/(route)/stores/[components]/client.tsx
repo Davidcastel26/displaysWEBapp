@@ -20,7 +20,7 @@ const stores = [
     img: `https://lh5.googleusercontent.com/p/AF1QipOoBGuVpGCKzSLymt7OKIGgeVe44mY60NqSh-5z=w480-h300-k-n-rw`
   },
   {
-    id: 2,
+    id: 3,
     address: 'Supermercado La Torre Marsical 2',
     address1: 'Ciudad de, 10 Avenida 8-16, Cdad. de Guatemala 01014',
     img: `https://lh5.googleusercontent.com/p/AF1QipOSci6mJpVrrMM4SCWAsO9Usg4iK6czEAHjvhEm=w480-h300-k-n-rw`
