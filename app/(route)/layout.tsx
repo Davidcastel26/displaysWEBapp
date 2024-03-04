@@ -8,7 +8,9 @@ const layout = (
     return (
     <div>
         <NavbarMain />
-        {children}
+        <div className="container mx-auto">
+          {children}
+        </div>
     </div>
   )
 }
