@@ -1,8 +1,11 @@
-import React from 'react'
+'use client'
+import { ClientStore } from './[components]'
 
 const Stores = () => {
   return (
-    <div>Stores</div>
+    <>
+      <ClientStore />
+    </>
   )
 }
 
