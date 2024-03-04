@@ -42,7 +42,7 @@ const EmblaCarousel: React.FC<PropTypeCarousel> = ({
            data.map((place: dataCarouselProps) => (
             <div 
               onClick={ ()=> handleClickStore(place) }
-              className="embla__slide embla__class-names hover:bg-slate-100" 
+              className="embla__slide embla__class-name" 
               key={place?.id}
             >
               <img
