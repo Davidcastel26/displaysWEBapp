@@ -1,6 +1,8 @@
 'use client'
+import React from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import { CardTitle, EmblaCarousel } from "@/components/system"
+import '@/css/embla.css'
 
 export const ClientStore = () => {
 
