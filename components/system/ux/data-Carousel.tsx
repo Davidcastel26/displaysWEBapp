@@ -1,23 +1,21 @@
 'use client'
-import { EmblaOptionsType } from 'embla-carousel'
+
 import useEmblaCarousel from 'embla-carousel-react'
 import ClassNames from 'embla-carousel-class-names'
+import { useDataCarousel } from '@/hooks/route'
+
+import { dataCarouselProps } from '@/typescript/interface'
+import { PropTypeCarousel  } from '@/typescript/types'
+
 import {
   NextButton,
   PrevButton,
   usePrevNextButtons
 } from './CarouselArrowButton'
-import { dataCarouselProps } from '@/typescript/interface'
-import { useDataCarousel } from '@/hooks/route'
+
 // import { DotButton, useDotButton } from './CarouselDotButton'
 
-type PropType = {
-  slides: number[]
-  options?: EmblaOptionsType
-  data: dataCarouselProps[]
-}
-
-const EmblaCarousel: React.FC<PropType> = ({ 
+const EmblaCarousel: React.FC<PropTypeCarousel> = ({ 
   slides, 
   options, 
   data 
@@ -70,18 +68,6 @@ const EmblaCarousel: React.FC<PropType> = ({
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
-        {/* the is the dots into the carousel
-         <div className="embla__dots">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={'embla__dot'.concat(
-                index === selectedIndex ? ' embla__dot--selected' : ''
-              )}
-            />
-          ))}
-        </div> */}
       </div>
     </div>
   )
