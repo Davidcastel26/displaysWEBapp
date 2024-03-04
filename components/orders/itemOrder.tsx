@@ -21,6 +21,7 @@ import { Card,
 
 import { ChevronDown } from 'lucide-react';
 
+const productImg = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnNPYmn2KH8UJzfoTfEHz3cNNlkfyuczHAqGJPPLBpEg&s`
 
 export const ItemOrder = () => {
   return (
@@ -35,7 +36,7 @@ export const ItemOrder = () => {
         <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="/avatars/01.png" />
+              <AvatarImage src={productImg} />
               <AvatarFallback>PY</AvatarFallback>
             </Avatar>
             <div>
