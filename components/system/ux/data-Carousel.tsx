@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import { useRouter } from 'next/navigation'
 import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import ClassNames from 'embla-carousel-class-names'
@@ -9,8 +10,8 @@ import {
   usePrevNextButtons
 } from './CarouselArrowButton'
 // import { DotButton, useDotButton } from './CarouselDotButton'
-import Image from 'next/image'
-import { redirect } from 'next/navigation'
+// import Image from 'next/image'
+
 
 interface dataProps {
   id: number
@@ -30,7 +31,8 @@ const EmblaCarousel: React.FC<PropType> = ({
   options, 
   data 
 }) => {
-  
+
+  const router = useRouter()
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [ClassNames()])
   // const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
@@ -43,18 +45,21 @@ const EmblaCarousel: React.FC<PropType> = ({
 
   const handleClickStore = () => {
 
-    redirect('/')
+    console.log( 'clicking')
+    // redirect('http://localhost:3001/')
+    router.push('/')
 
   }
 
   return (
     <div className="embla">
-      <div className="overflow-hidden" ref={emblaRef} onClick={ handleClickStore }>
+      <div className="overflow-hidden" ref={emblaRef}>
         <div className="embla__container">
           {
            data.map((place: dataProps) => (
             <div 
-              className="embla__slide embla__class-names" 
+              onClick={ ()=>handleClickStore() }
+              className="embla__slide embla__class-names hover:bg-slate-100" 
               key={place?.id}
             >
               <img
