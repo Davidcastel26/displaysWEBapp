@@ -48,14 +48,14 @@ const EmblaCarousel: React.FC<PropTypeCarousel> = ({
               <img
                 className="embla__slide__img"
                 src={place?.img}
-                alt={ place?.address }
+                alt={ place?.addressLine2 + place?.desc}
               />
              <div className="pt-[-1rem] flex flex-col text-center">
                 <h2 className="text-lg font-semibold">
-                  { place?.address}
+                  { place?.name}
                 </h2>
                 <p className="font-medium text-base">
-                  { place?.address1}
+                  { place?.addressLine1}
                 </p>
               </div>
             </div>

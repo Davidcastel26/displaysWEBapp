@@ -1,5 +1,5 @@
 'use client'
-import { ClientStore } from './[components]'
+import { ClientStore } from './(components)'
 
 const Stores = () => {
   return (
