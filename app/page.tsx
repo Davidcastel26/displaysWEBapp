@@ -2,6 +2,7 @@
 
 import { NavbarMain } from '@/components/system';
 // import {Suspense,lazy} from "react";
+import {Suspense} from "react";
 import Order from './(orders)/order/page';
 
 // const Nav = lazy(() => {
@@ -17,11 +18,11 @@ export default function Home() {
   return (
     <>
       <NavbarMain />
-      {/* <Suspense fallback={'loading'}> */}
+      <Suspense fallback={'loading'}>
         {/* <Nav> */}
-      <Order/>
+        <Order/>
         {/* </Nav> */}
-      {/* </Suspense> */}
+      </Suspense>
       {/* <Footer /> */}
     </>
   )
