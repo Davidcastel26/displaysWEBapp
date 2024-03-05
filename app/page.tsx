@@ -6,7 +6,6 @@ import {Suspense} from "react";
 import Order from './(orders)/order/page';
 
 // const Nav = lazy(() => {
-//   console.log(import('next1/nav'));
 //   return import('next1/nav');
 // });
 

@@ -18,7 +18,7 @@ const loggerImpl: LoggerImpl = (f, name) => (set, get, store) => {
   type T = ReturnType<typeof f>
   const loggedSet: typeof set = (...a) => {
     set(...a)
-    console.log(...(name ? [`${name}:`] : []), get())
+    // console.log(...(name ? [`${name}:`] : []), get())
   }
   store.setState = loggedSet
 
