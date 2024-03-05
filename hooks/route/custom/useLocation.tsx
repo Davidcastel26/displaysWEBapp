@@ -1,3 +1,4 @@
+'use client'
 import { useMarketPalceStore } from "@/stores/route/superMarket/storePlace.store"
 
 export const useLocation = () => {

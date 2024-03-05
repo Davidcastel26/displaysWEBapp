@@ -1,4 +1,4 @@
-
+'use client'
 import { useLocation } from '@/hooks';
 import { MapPin,
         ArrowRight } from 'lucide-react';

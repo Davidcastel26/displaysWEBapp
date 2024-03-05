@@ -1,3 +1,4 @@
+'use client'
 import { useMarketPalceStore } from '@/stores/route/superMarket/storePlace.store'
 import { dataCarouselProps } from '@/typescript/interface'
 import { useRouter } from 'next/navigation'
