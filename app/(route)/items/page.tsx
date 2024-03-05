@@ -1,8 +1,12 @@
+'use client'
 
+import { ClientItems } from "./(components)"
 
 const ItemsPerStore = () => {
   return (
-    <div>page</div>
+    <>
+      <ClientItems />
+    </>
   )
 }
 
