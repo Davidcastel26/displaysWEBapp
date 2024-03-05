@@ -16,14 +16,10 @@ export const useDataCarousel = () => {
 
     const handleClickStore = (storePlace: dataCarouselProps) => {
 
-        // console.log(storePlace);
-
         setNewId( storePlace?.id )
         setNewName( storePlace?.name )
         setNewAddress1( storePlace?.addressLine1 )
-        // console.log( 'clicking the ', + {storePlace})
-      
-        // redirect('http://localhost:3001/')
+
         router.push('/')
     
       }
