@@ -21,7 +21,7 @@ export const useDataCarousel = () => {
         setNewName( storePlace?.name )
         setNewAddress1( storePlace?.addressLine1 )
 
-        router.push('/')
+        router.push('/order')
     
       }
 

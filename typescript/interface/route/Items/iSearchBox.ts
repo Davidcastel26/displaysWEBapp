@@ -1,19 +1,19 @@
 
-export interface SearchBoxProps {
-    id: string
-    name: string
-    label: string
-    placeholder: string
-    autoComplate: boolean
-    maxItems:number
-    styles: Styles
-    debounceWait: number | any
-    listBox: (items: any) => void
+export interface SearchBoxProps{
+    id: string;
+    name: string;
+    label: string;
+    placeholder: string;
+    autoComplate: boolean; // There's a typo here, should it be autoComplete?
+    maxItems: number;
+    styles: Styles;
+    debounceWait: number;
+    listBox: (items: any[]) => JSX.Element; // Consider defining a type for items
     noItemMessage: () => JSX.Element;
     errorMessage: () => JSX.Element;
-    transformData: (data: any) => void
-    dataPromise: (query: any, signal: any) => Promise<void>
-}
+    transformData: (data: any) => any; // Define specific types for input/output if possible
+    dataPromise: (query: string, signal: AbortSignal) => Promise<any>; // Define the expected return type of the promise
+  }
 
 export interface Styles {
     label: string
@@ -23,7 +23,7 @@ export interface Styles {
 
 export interface UseTypeHeadFetchPromiseParams<TData, TTransformed> {
     query: string;
-    transformData: (data: TData |any) => TTransformed;
-    dataPromise: (query: string | undefined, signal: any | undefined) => Promise<void|any>;
-    debounceWait: number | any;
+    transformData: (data: TData) => TTransformed;
+    dataPromise: (query: string, signal: string) => Promise<TData | any>;
+    debounceWait: number;
   }
