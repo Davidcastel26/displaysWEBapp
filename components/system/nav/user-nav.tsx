@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 
-const iconImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwg2PWrY_5mkISXy_GqXWUYPbglvpL6FSUgg&usqp=CAU'
+const iconImg = 'https://lh3.googleusercontent.com/a/ACg8ocLukrfVRe4UgvsJei3QzPsnxRh44a2x0JjLtrvguLPJF727=s576-c-no'
 
 export const UserNav = () => {
   return (
