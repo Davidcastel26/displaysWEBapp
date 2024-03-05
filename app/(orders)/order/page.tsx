@@ -1,7 +1,7 @@
 
 import { HeadTitle,
          OrdersDisplay,
-         Location } from "./[components]"
+         Location } from "./(components)"
 
 const Order = () => {
   return (
