@@ -1,6 +1,7 @@
 'use client'
 
 import { ListBox } from "./ListBox"
+import { NoItemFound } from "./NoItemFound";
 import { SearchBox } from "./SearchBox"
 
 const maxItems = 5;
@@ -14,20 +15,20 @@ export const ClientItems = () => {
     }
 
   return (
-    <div className="flex items-center flex-col">
+    <div className="flex items-center flex-col mt-[2rem] ">
         <SearchBox 
             id="personName"
             name="personName"
-            label="Enter product name"
-            placeholder="Enter your fav star war char"
+            label="Lista de Items"
+            placeholder="Buscar item por nombre"
             autoComplate
             styles={{
-                label:"mt-[3rem] scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0",
-                input:""
+                label:"mt-[3rem] scroll-m-20 pb-1 text-xl font-semibold text-left tracking-tight transition-colors first:mt-0",
+                input:"border-slate-600"
             }}
             debounceWait={ 400 }
             listBox={(items, activeIndex) => <ListBox items={items} activeIndex={activeIndex} /> }
-            noItemMessage={() => <div> Lo sentimos no esta este producto 🙁</div>}
+            noItemMessage={() => <NoItemFound />}
             errorMessage={ () => <div> Lo sentimos item no encontrado</div>}
             transformData={ transformData }
             promise={ dataPromise }

@@ -1,3 +1,4 @@
+import { NoItemFound } from './NoItemFound';
 import { ClientItems } from './client'
 import { ListBox } from './ListBox'
 import { SearchBox } from './SearchBox'
@@ -5,5 +6,6 @@ import { SearchBox } from './SearchBox'
 export {
     ClientItems,
     SearchBox,
-    ListBox
+    ListBox,
+    NoItemFound
 }

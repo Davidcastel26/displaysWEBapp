@@ -70,7 +70,7 @@ export const SearchBox: FC<SearchBoxProps> = ({
       <Label className={styles.label} htmlFor={name}>
         {label}
       </Label>
-      <br />
+      
       <Input
         className={styles.input}
         name={name}
