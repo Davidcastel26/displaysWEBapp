@@ -11,7 +11,6 @@ export const SearchBox: FC<SearchBoxProps> = ({
   label,
   placeholder,
   autoComplate,
-  maxItems,
   styles,
   debounceWait,
   listBox,
@@ -23,13 +22,13 @@ export const SearchBox: FC<SearchBoxProps> = ({
 
   const [query, setQuery] = useState<string>("");
   const [ activeIndex, setActiveIndex ] = useState<null | number >( null )
-
+  const [ isAutoComplate, setIsAutoComplete ] = useState( autoComplate )
   const [data, setData, error]: any = useTypeHeadFechPromise(
     query,
     transformData,
     promise,
     debounceWait,
-    autoComplate
+    isAutoComplate,
   );
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -43,8 +42,16 @@ export const SearchBox: FC<SearchBoxProps> = ({
     if( keyCode === 13 ){
         // user enter
         if( activeIndex === null ) return;
+        setQuery( data[activeIndex].name)
+        setData( null )
+        setActiveIndex( null )
+        setIsAutoComplete( false )
+        return 
+    } 
+    setIsAutoComplete( true )
+    if( !data || data.length === 0 ) return;
 
-    } else if( keyCode === 40){
+    if( keyCode === 40){
         //user down
         if( activeIndex === null || activeIndex === data.length - 1){
             setActiveIndex(0)
@@ -74,6 +81,8 @@ export const SearchBox: FC<SearchBoxProps> = ({
         onKeyUp={ handleKeyUp }
       />
       {data && data.length > 0 && listBox(data, activeIndex)}
+      { query && data && data.length === 0 && noItemMessage()}
+      { error && errorMessage()}
     </>
   );
 };

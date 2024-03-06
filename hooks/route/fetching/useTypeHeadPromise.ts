@@ -12,7 +12,6 @@ const useTypeHeadFechPromise = (
   promise: (query: string, signal: AbortSignal ) => Promise<Response>,
   debounceWait: number,
   autoComplate: boolean,
-
 ) => {
 
   const [data, setData] = useState<any | string>(null);

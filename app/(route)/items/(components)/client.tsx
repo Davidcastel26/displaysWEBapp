@@ -3,9 +3,11 @@
 import { ListBox } from "./ListBox"
 import { SearchBox } from "./SearchBox"
 
+const maxItems = 5;
+
 export const ClientItems = () => {
 
-    const transformData = ( data:any ) => data.results
+    const transformData = ( data:any ) => data.results.slice( 0, maxItems)
 
     const dataPromise = async ( query: string, signal: AbortSignal ): Promise<Response> => {
         return fetch(`https://swapi.dev/api/people/?search=${query}`, { signal })
@@ -19,7 +21,6 @@ export const ClientItems = () => {
             label="Enter product name"
             placeholder="Enter your fav star war char"
             autoComplate
-            maxItems={5}
             styles={{
                 label:"mt-[3rem] scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0",
                 input:""

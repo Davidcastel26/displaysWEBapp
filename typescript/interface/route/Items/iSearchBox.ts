@@ -6,7 +6,6 @@ export interface SearchBoxProps{
   label: string;
   placeholder: string;
   autoComplate: boolean;
-  maxItems: number;
   styles: Styles;
   debounceWait: number;
   listBox: (items: ItemProps[], activeIndex: number | null) => JSX.Element; 
