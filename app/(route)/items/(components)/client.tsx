@@ -18,14 +18,14 @@ export const ClientItems = () => {
             name="personName"
             label="Enter product name"
             placeholder="Enter your fav star war char"
-            autoComplate={ true }
+            autoComplate
             maxItems={5}
             styles={{
                 label:"mt-[3rem] scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0",
                 input:""
             }}
             debounceWait={ 400 }
-            listBox={(items) => <ListBox items={items} /> }
+            listBox={(items, activeIndex) => <ListBox items={items} activeIndex={activeIndex} /> }
             noItemMessage={() => <div> Lo sentimos no esta este producto 🙁</div>}
             errorMessage={ () => <div> Lo sentimos item no encontrado</div>}
             transformData={ transformData }

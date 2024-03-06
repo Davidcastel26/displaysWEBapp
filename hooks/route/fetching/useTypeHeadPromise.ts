@@ -10,7 +10,9 @@ const useTypeHeadFechPromise = (
   query: string | any,
   transformData: (data: any) => void,
   promise: (query: string, signal: AbortSignal ) => Promise<Response>,
-  debounceWait: number
+  debounceWait: number,
+  autoComplate: boolean,
+
 ) => {
 
   const [data, setData] = useState<any | string>(null);
@@ -28,7 +30,7 @@ const useTypeHeadFechPromise = (
           setData(transformData(data));
         } catch (error) {
           console.log(error);
-          setError(error);
+          if( !signal.aborted) setError(error);
         }
       },
       debounceWait
@@ -38,7 +40,7 @@ const useTypeHeadFechPromise = (
 
   useEffect(() => {
 
-    if (!query) {
+    if (!query || !autoComplate ) {
       setData(null);
       setError(null);
       return;
@@ -60,7 +62,7 @@ const useTypeHeadFechPromise = (
         controller.abort();
     }
 
-  }, [query, transformData, fetchData ]);
+  }, [ query, transformData, fetchData, autoComplate ]);
 
   return [data, setData, error];
 };

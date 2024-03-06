@@ -9,7 +9,7 @@ export interface SearchBoxProps{
   maxItems: number;
   styles: Styles;
   debounceWait: number;
-  listBox: (items: ItemProps[]) => JSX.Element; 
+  listBox: (items: ItemProps[], activeIndex: number | null) => JSX.Element; 
   noItemMessage: () => JSX.Element;
   errorMessage: () => JSX.Element;
   transformData: (data: ItemProps) => void;
