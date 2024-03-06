@@ -9,7 +9,7 @@ import {
 const useTypeHeadFechPromise = (
   query: string | any,
   transformData: (data: any) => void,
-  promise: (query: string) => Promise<Response>,
+  promise: (query: string, signal: AbortSignal ) => Promise<Response>,
   debounceWait: number
 ) => {
 
