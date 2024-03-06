@@ -1,19 +1,22 @@
+import { ItemProps } from "./index";
 
 export interface SearchBoxProps{
-    id: string;
-    name: string;
-    label: string;
-    placeholder: string;
-    autoComplate: boolean; // There's a typo here, should it be autoComplete?
-    maxItems: number;
-    styles: Styles;
-    debounceWait: number;
-    listBox: (items: any[]) => JSX.Element; // Consider defining a type for items
-    noItemMessage: () => JSX.Element;
-    errorMessage: () => JSX.Element;
-    transformData: (data: any) => any; // Define specific types for input/output if possible
-    dataPromise: (query: string, signal: AbortSignal) => Promise<any>; // Define the expected return type of the promise
-  }
+  id: string;
+  name: string;
+  label: string;
+  placeholder: string;
+  autoComplate: boolean;
+  maxItems: number;
+  styles: Styles;
+  debounceWait: number;
+  listBox: (items: ItemProps[]) => JSX.Element; 
+  noItemMessage: () => JSX.Element;
+  errorMessage: () => JSX.Element;
+  transformData: (data: ItemProps) => void;
+  promise: (query: string) => Promise<Response>; 
+}
+  // promise: (query: string, signal: AbortSignal) => Promise<any>; 
+  // promise: (query: string) => Promise<void>; 
 
 export interface Styles {
     label: string
@@ -22,8 +25,14 @@ export interface Styles {
 
 
 export interface UseTypeHeadFetchPromiseParams<TData, TTransformed> {
-    query: string;
-    transformData: (data: TData) => TTransformed;
-    dataPromise: (query: string, signal: string) => Promise<TData | any>;
-    debounceWait: number;
-  }
+  query: string;
+  transformData: (data: TData) => TTransformed;
+  dataPromise: (query: string, signal: string) => Promise<TData | any>;
+  debounceWait: number;
+}
+
+export interface useTypeHeadProps {
+  query: string| any;
+  transformData: (data: any) => void;
+  promise: ( query: string ) => Promise<Response>;
+}

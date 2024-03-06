@@ -1,57 +1,43 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import debounce from 'lodash/debounce'
-import { UseTypeHeadFetchPromiseParams } from "@/typescript/interface";
+import { UseTypeHeadFetchPromiseParams, useTypeHeadProps } from "@/typescript/interface";
 
-// const useTypeHeadFechPromise = <TData, TTransformed>({
-const useTypeHeadFechPromise = <TData, TTransformed>({
-    query,
-    transformData,
-    dataPromise,
-    debounceWait
-  }: UseTypeHeadFetchPromiseParams<TData, TTransformed>) => {
+// const useTypeHeadFechPromise: FC<useTypeHeadProps> = ( query, transformData, promise)  =>{
+const useTypeHeadFechPromise = (
+        query: string| any, 
+        transformData: (data: any) => void, 
+        promise: (query: string) => Promise<Response>
+) => {
+    const [data, setData] = useState<any | string>(null);
 
-    // const [ dataSave, setDataSave ] = useState( null )
-    const [dataSave, setDataSave] = useState<any | null>(null);
     const [ error, setError ] = useState< null | any >( null )
 
-    const fetchData = useCallback(
-        debounce( async( query, transformData, signal) => {
-            try {
-                
-                const response = await dataPromise(query, signal);
-                if( !response.ok) throw new Error(response.statusText)
-                const data = await response.json()
-                console.log(data);
-                setDataSave(transformData(data))
-
-            } catch (error) {
-                console.log(error);
-                if(!signal.abort) setError(error)
-            }
-        }, debounceWait),
-    [])
+    const fetchData = useCallback( async(query:any | string, transformData:any) => {
+        try {
+            const response = await promise( query );
+            if( !response.ok) throw new Error(response.statusText);
+            const data = await response.json();
+            console.log(data);
+            setData( transformData( data ) );
+        } catch (error) {
+            console.log( error )
+            setError( error )
+        }
+    }, [])
 
     useEffect( () => {
 
-        if( !query ){
-            setDataSave(null)
-            setError(null)
+        if( !query ) {
+            setData( null )
+            setError( null )
             return
         }
 
-        const controller = new AbortController()
-        const signal = controller.signal
-
-        fetchData( query, transformData, signal )
-
-        //cleaning fuction
-        return() => {
-            controller.abort()
-        }
+        fetchData( query, transformData )
 
     },[query, transformData, fetchData])
 
-    return [ dataSave, setDataSave, error]
+    return [ data, setData, error ]
 }
 
 export default useTypeHeadFechPromise;

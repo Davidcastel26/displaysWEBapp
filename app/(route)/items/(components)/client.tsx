@@ -5,11 +5,10 @@ import { SearchBox } from "./SearchBox"
 
 export const ClientItems = () => {
 
-
     const transformData = ( data:any ) => data.results
 
-    const dataPromise = async (query: string, signal: any ) => {
-        await fetch(`https://swapi.dev/api/people/?search=${query}`,{signal})
+    const dataPromise = async ( query: string ): Promise<Response> => {
+        return fetch(`https://swapi.dev/api/people/?search=${query}`)
     }
 
   return (
@@ -22,7 +21,7 @@ export const ClientItems = () => {
             autoComplate={ true }
             maxItems={5}
             styles={{
-                label:"",
+                label:"mt-[3rem] scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0",
                 input:""
             }}
             debounceWait={ 400 }
@@ -30,7 +29,7 @@ export const ClientItems = () => {
             noItemMessage={() => <div> Lo sentimos no esta este producto 🙁</div>}
             errorMessage={ () => <div> Lo sentimos item no encontrado</div>}
             transformData={ transformData }
-            dataPromise={ dataPromise }
+            promise={ dataPromise }
         />
     </div>
   )

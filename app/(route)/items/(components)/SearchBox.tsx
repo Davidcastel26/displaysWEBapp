@@ -2,6 +2,7 @@
 import { ChangeEventHandler, FC, useState } from "react"
 import { SearchBoxProps } from "@/typescript/interface"
 import { useTypeHeadFechPromise } from "@/hooks"
+import { Input } from "@/components/ui/input"
 
 
 export const SearchBox: FC<SearchBoxProps> = ({
@@ -17,17 +18,15 @@ export const SearchBox: FC<SearchBoxProps> = ({
     noItemMessage,
     errorMessage,
     transformData,
-    dataPromise,
+    promise,
 }) => {
 
     const [query, setQuery] = useState<string>('')
-    const [dataSave, setDataSave, error] = useTypeHeadFechPromise(
-        query, 
-        transformData, 
-        dataPromise, 
-        debounceWait)
 
-    const handleChange: ChangeEventHandler<HTMLInputElement> = (event ) => {
+    const [data, setData, error]:any = useTypeHeadFechPromise(query, transformData, promise)
+
+
+    const handleChange: ChangeEventHandler<HTMLInputElement> = ( event ) => {
         setQuery(event.target.value)
     }
 
@@ -37,14 +36,14 @@ export const SearchBox: FC<SearchBoxProps> = ({
                 {label}
             </label>
             <br />
-            <input
+            <Input
                 className={styles.input}
                 name={name}
                 id={id}
                 value={query}
                 onChange={handleChange}
             />
-            {dataSave && dataSave.length > 0 && listBox(dataSave)}
+            {data && data.length > 0 && listBox(data)}
         </>
     )
 }
