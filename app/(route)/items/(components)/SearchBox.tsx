@@ -23,7 +23,7 @@ export const SearchBox: FC<SearchBoxProps> = ({
 
     const [query, setQuery] = useState<string>('')
 
-    const [data, setData, error]:any = useTypeHeadFechPromise(query, transformData, promise)
+    const [data, setData, error]:any = useTypeHeadFechPromise(query, transformData, promise, debounceWait)
 
 
     const handleChange: ChangeEventHandler<HTMLInputElement> = ( event ) => {

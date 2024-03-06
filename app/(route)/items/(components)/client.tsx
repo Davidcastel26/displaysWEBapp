@@ -7,8 +7,8 @@ export const ClientItems = () => {
 
     const transformData = ( data:any ) => data.results
 
-    const dataPromise = async ( query: string ): Promise<Response> => {
-        return fetch(`https://swapi.dev/api/people/?search=${query}`)
+    const dataPromise = async ( query: string, signal: AbortSignal ): Promise<Response> => {
+        return fetch(`https://swapi.dev/api/people/?search=${query}`, { signal })
     }
 
   return (

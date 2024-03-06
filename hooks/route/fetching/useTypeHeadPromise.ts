@@ -1,43 +1,68 @@
 import { FC, useCallback, useEffect, useState } from "react";
-import debounce from 'lodash/debounce'
-import { UseTypeHeadFetchPromiseParams, useTypeHeadProps } from "@/typescript/interface";
+import debounce from "lodash/debounce"; //
+import {
+  UseTypeHeadFetchPromiseParams,
+  useTypeHeadProps,
+} from "@/typescript/interface";
 
-// const useTypeHeadFechPromise: FC<useTypeHeadProps> = ( query, transformData, promise)  =>{
+
 const useTypeHeadFechPromise = (
-        query: string| any, 
-        transformData: (data: any) => void, 
-        promise: (query: string) => Promise<Response>
+  query: string | any,
+  transformData: (data: any) => void,
+  promise: (query: string) => Promise<Response>,
+  debounceWait: number
 ) => {
-    const [data, setData] = useState<any | string>(null);
 
-    const [ error, setError ] = useState< null | any >( null )
+  const [data, setData] = useState<any | string>(null);
 
-    const fetchData = useCallback( async(query:any | string, transformData:any) => {
+  const [error, setError] = useState<null | any>(null);
+
+  const fetchData = useCallback(
+    debounce(
+      async (query: any | string, transformData: any, signal: AbortSignal ) => {
         try {
-            const response = await promise( query );
-            if( !response.ok) throw new Error(response.statusText);
-            const data = await response.json();
-            console.log(data);
-            setData( transformData( data ) );
+          const response = await promise(query, signal);
+          if (!response.ok) throw new Error(response.statusText);
+          const data = await response.json();
+          console.log(data);
+          setData(transformData(data));
         } catch (error) {
-            console.log( error )
-            setError( error )
+          console.log(error);
+          setError(error);
         }
-    }, [])
+      },
+      debounceWait
+    ),
+    []
+  );
 
-    useEffect( () => {
+  useEffect(() => {
 
-        if( !query ) {
-            setData( null )
-            setError( null )
-            return
-        }
+    if (!query) {
+      setData(null);
+      setError(null);
+      return;
+    }
 
-        fetchData( query, transformData )
+    // in this place we need to create a signal since when we delete in the input at some point is making a call and it wont allow it while deleting a text 
 
-    },[query, transformData, fetchData])
+    const controller = new AbortController()
+    const signal = controller.signal
 
-    return [ data, setData, error ]
-}
+    // query is the name from the prodcut
+    // transformData is gettting the response [] and getting {data}
+    // debounceWait is the time to wait to make the fecth
+    fetchData(query, transformData, signal);
+
+    // clean function 
+    return() => {
+        // every time the query change this will run first
+        controller.abort();
+    }
+
+  }, [query, transformData, fetchData ]);
+
+  return [data, setData, error];
+};
 
 export default useTypeHeadFechPromise;
