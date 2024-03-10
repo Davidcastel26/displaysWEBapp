@@ -23,12 +23,7 @@ export interface Styles {
 }
 
 
-export interface UseTypeHeadFetchPromiseParams<TData, TTransformed> {
-  query: string;
-  transformData: (data: TData) => TTransformed;
-  dataPromise: (query: string, signal: string) => Promise<TData | any>;
-  debounceWait: number;
-}
+
 
 export interface useTypeHeadProps {
   query: string| any;
